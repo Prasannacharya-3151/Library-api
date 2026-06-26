@@ -51,7 +51,7 @@ func GetAllBooks() ([]models.Book, error) {
 	for rows.Next() {
 		var book models.Book
 		err := rows.Scan(
-			&books.ID,
+			&book.ID,
 			&book.Title,
 			&book.Author,
 			&book.ISBN,

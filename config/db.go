@@ -30,3 +30,24 @@ func ConnectDB() {
 	log.Printf("Databse connected successfully")
 	DB = db
 }
+
+func MigrateDB() {
+	query := `
+	CREATE TABLE IF NOT EXISTS books (
+	id SERIAL PRIMARY KEY,
+	title VARCHAR(225) NOT NULL,
+	author VARCHAR(225) NOT NULL,
+	isbn VARCHAR(50) UNIQUE,
+	total_copies INT NOT NULL DEFAULT 1,
+	available_copies INT NOT NULL DEFAULT 1,
+	created-at TIMESTAMP DEFAULT NOW()
+	);
+	`
+
+	_, err := DB.Exec(query)
+	if err != nil {
+		log.Fatal("Failed to migrate books table:", err)
+	}
+
+	log.Println("books table ready")
+}
