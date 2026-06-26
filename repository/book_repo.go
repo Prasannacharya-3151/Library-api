@@ -11,9 +11,9 @@ func CreateBook(input models.CreatedBookInput) (models.Book, error) {
 	var book models.Book
 
 	query := `
-	INSERT INTO book (title, author, isbn, total_copies, available_copies)
+	INSERT INTO books (title, author, isbn, total_copies, available_copies)
 	VALUES ($1, $2, $3, $4, $4)
-	RETURNING id, title, author, isbn, totla_copies, available_copies, created_at
+	RETURNING id, title, author, isbn, total_copies, available_copies, created_at
 	`
 	// $1, $2, $3, $4 are placeholders — Postgres syntax for parameterized queries.
 	// NEVER use string concatenation/fmt.Sprintf for SQL — that's how SQL injection happens.
@@ -37,7 +37,7 @@ func CreateBook(input models.CreatedBookInput) (models.Book, error) {
 //read and get all the books
 
 func GetAllBooks() ([]models.Book, error) {
-	query := `SELECT id, title, author, isbn, total_copies, available_aopies, create_at FROM books ORDER BY id`
+	query := `SELECT id, title, author, isbn, total_copies, available_copies, created_at FROM books ORDER BY id`
 
 	rows, err := config.DB.Query(query)
 	if err != nil {

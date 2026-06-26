@@ -18,7 +18,7 @@ func ConnectDB() {
 	dbname:= os.Getenv("DB_NAME")
 
 	dsn := fmt.Sprintf(
-		"host=%s port=%s user=%s password=%s dbname=%s sslmode=disabel",
+		"host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
 		host, port, user, password, dbname,
 	)
 
@@ -27,7 +27,7 @@ func ConnectDB() {
 		log.Fatal("Faile to ping a db", err)
 	}
 
-	log.Printf("Databse connected successfully")
+	log.Printf("Database connected successfully")
 	DB = db
 }
 
@@ -40,7 +40,7 @@ func MigrateDB() {
 	isbn VARCHAR(50) UNIQUE,
 	total_copies INT NOT NULL DEFAULT 1,
 	available_copies INT NOT NULL DEFAULT 1,
-	created-at TIMESTAMP DEFAULT NOW()
+	created_at TIMESTAMP DEFAULT NOW()
 	);
 	`
 
