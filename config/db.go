@@ -5,8 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
-
-	"gorm.io/driver/postgres"
+	_ "github.com/lib/pq" // driver only — we never call it directly, hence the underscore import
 )
 
 var DB *sql.DB

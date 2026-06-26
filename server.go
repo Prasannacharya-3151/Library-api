@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	if err := godotenv.Load(); err != nil {
+	if err := godotenv(); err != nil {
 		log.Println("No env file found in the system vars")
 	}
 

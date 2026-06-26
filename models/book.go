@@ -13,7 +13,7 @@ type Book struct {
 }
 
 //what the client sends us when creating  a book
-type CreatedBook struct {
+type CreatedBookInput struct {
 	Title string `json:"title" binding:"required"`
 	Author string `json:"author" binding:"required"`
 	ISBN string `json:"isbn" binding:"required"`
