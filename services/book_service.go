@@ -5,8 +5,6 @@ import (
 	"errors"
 	"library-api/models"
 	"library-api/repository"
-
-	"github.com/go-playground/locales/id"
 )
 
 func CreateBookService(input models.CreatedBookInput) (models.Book, error) {
@@ -24,6 +22,10 @@ func GetBookByIDService(id int) (models.Book, error) {
 		return book, errors.New("book not found")
 	}
 	return book, err
+}
+
+func UpdatedBookService(id int, input models.UpdateBookInput) (models.Book, error) {
+	return repository.UpdateBook(id, input)
 }
 
 func DeleteBookService(id int) error {
